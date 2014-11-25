@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>0D6CF5E3-05D5-449E-88FE-CAEDC2A15460</string>
+	<key>IDESourceControlProjectName</key>
+	<string>mixpanel-ios</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>E7B3A76F7461272AA55A4F3DD002D20DFA51EC02</key>
+		<string>https://github.com/funkypandagame/ane-mixpanel.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>mixpanel-ios/src/xcode/mixpanel-ios.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>E7B3A76F7461272AA55A4F3DD002D20DFA51EC02</key>
+		<string>../../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/funkypandagame/ane-mixpanel.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>E7B3A76F7461272AA55A4F3DD002D20DFA51EC02</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>E7B3A76F7461272AA55A4F3DD002D20DFA51EC02</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ane-mixpanel</string>
+		</dict>
+	</array>
+</dict>
+</plist>
