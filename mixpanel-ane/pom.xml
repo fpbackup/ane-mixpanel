@@ -89,7 +89,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <finalName>mobile-billing.ane</finalName>
+                    <finalName>ane-mixpanel.ane</finalName>
                     <versionNumber>${project.version}</versionNumber>
                     <versionLabel>${project.version}</versionLabel>
                     <pluginHome>${user.home}/.adt</pluginHome>
@@ -133,7 +133,7 @@
                     <artifactId>${project.artifactId}</artifactId>
                     <version>${project.version}</version>
                     <packaging>ane</packaging>
-                    <file>${basedir}/target/mobile-billing.ane</file>
+                    <file>${basedir}/target/ane-mixpanel.ane</file>
                     <generatePom>true</generatePom>
                 </configuration>
                 <executions>
@@ -157,7 +157,7 @@
                     <artifactId>${project.artifactId}</artifactId>
                     <version>${project.version}</version>
                     <packaging>ane</packaging>
-                    <file>${basedir}/target/mobile-billing.ane</file>
+                    <file>${basedir}/target/ane-mixpanel.ane</file>
                     <generatePom>true</generatePom>
                     <repositoryId>libs-release-local</repositoryId>
                     <url>http://artifactory.funkypandagame.com:8081/artifactory/funkypanda</url>
