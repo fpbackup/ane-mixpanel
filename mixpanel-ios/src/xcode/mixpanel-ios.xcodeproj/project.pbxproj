@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		07A8C83B1A24B2B40089D9E0 /* InAppPurchase_iOS.m in Sources */ = {isa = PBXBuildFile; fileRef = 07A8C8381A24B2B40089D9E0 /* InAppPurchase_iOS.m */; };
-		07A8C83C1A24B2B40089D9E0 /* PaymentUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 07A8C83A1A24B2B40089D9E0 /* PaymentUtils.m */; };
+		07A8C83B1A24B2B40089D9E0 /* mixpanel-ios.m in Sources */ = {isa = PBXBuildFile; fileRef = 07A8C8381A24B2B40089D9E0 /* mixpanel-ios.m */; };
 		25DF04E619C1BD6A0088EBB3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25DF04E519C1BD6A0088EBB3 /* Foundation.framework */; };
 		97F0B9FA44C3382C66F53B92 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 115172CD3E192C2C0352948C /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -27,10 +26,8 @@
 
 /* Begin PBXFileReference section */
 		07A8C8361A24B2B40089D9E0 /* FlashRuntimeExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlashRuntimeExtensions.h; path = "mixpanel-ios/FlashRuntimeExtensions.h"; sourceTree = SOURCE_ROOT; };
-		07A8C8371A24B2B40089D9E0 /* InAppPurchase_iOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InAppPurchase_iOS.h; path = "mixpanel-ios/InAppPurchase_iOS.h"; sourceTree = SOURCE_ROOT; };
-		07A8C8381A24B2B40089D9E0 /* InAppPurchase_iOS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InAppPurchase_iOS.m; path = "mixpanel-ios/InAppPurchase_iOS.m"; sourceTree = SOURCE_ROOT; };
-		07A8C8391A24B2B40089D9E0 /* PaymentUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PaymentUtils.h; path = "mixpanel-ios/PaymentUtils.h"; sourceTree = SOURCE_ROOT; };
-		07A8C83A1A24B2B40089D9E0 /* PaymentUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PaymentUtils.m; path = "mixpanel-ios/PaymentUtils.m"; sourceTree = SOURCE_ROOT; };
+		07A8C8371A24B2B40089D9E0 /* mixpanel-ios.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "mixpanel-ios.h"; path = "mixpanel-ios/mixpanel-ios.h"; sourceTree = SOURCE_ROOT; };
+		07A8C8381A24B2B40089D9E0 /* mixpanel-ios.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "mixpanel-ios.m"; path = "mixpanel-ios/mixpanel-ios.m"; sourceTree = SOURCE_ROOT; };
 		07A8C83D1A24BE470089D9E0 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		115172CD3E192C2C0352948C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		25BDD9FD19C9C7D000B49BA0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -86,10 +83,8 @@
 			isa = PBXGroup;
 			children = (
 				07A8C8361A24B2B40089D9E0 /* FlashRuntimeExtensions.h */,
-				07A8C8371A24B2B40089D9E0 /* InAppPurchase_iOS.h */,
-				07A8C8381A24B2B40089D9E0 /* InAppPurchase_iOS.m */,
-				07A8C8391A24B2B40089D9E0 /* PaymentUtils.h */,
-				07A8C83A1A24B2B40089D9E0 /* PaymentUtils.m */,
+				07A8C8371A24B2B40089D9E0 /* mixpanel-ios.h */,
+				07A8C8381A24B2B40089D9E0 /* mixpanel-ios.m */,
 			);
 			name = "mixpanel-ios";
 			path = "InAppPurchase-iOS";
@@ -190,8 +185,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				07A8C83C1A24B2B40089D9E0 /* PaymentUtils.m in Sources */,
-				07A8C83B1A24B2B40089D9E0 /* InAppPurchase_iOS.m in Sources */,
+				07A8C83B1A24B2B40089D9E0 /* mixpanel-ios.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,7 +226,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				VALID_ARCHS = "armv6 armv7";
+				VALID_ARCHS = "armv6 armv7 arm64";
 			};
 			name = Debug;
 		};
@@ -264,7 +258,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
-				VALID_ARCHS = "armv6 armv7";
+				VALID_ARCHS = "armv6 armv7 arm64";
 			};
 			name = Release;
 		};
@@ -284,6 +278,7 @@
 				PRODUCT_NAME = "mixpanel-ios";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "armv6 armv7 arm64";
 			};
 			name = Debug;
 		};
@@ -303,6 +298,7 @@
 				PRODUCT_NAME = "mixpanel-ios";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "armv6 armv7 arm64";
 			};
 			name = Release;
 		};

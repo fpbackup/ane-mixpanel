@@ -15,17 +15,17 @@
     </scm>
 
     <modules>
-        <!--<module>mixpanel-flash</module>
-        <module>mixpanel-android</module>-->
-        <module>mixpanel-ios</module>
-        <!--<module>mixpanel-ane</module>-->
+        <module>mixpanel-flash</module>
+        <!--<module>mixpanel-android</module>
+        <module>mixpanel-ios</module>-->
+        <module>mixpanel-ane</module>
     </modules>
 
     <properties>
         <maven.build.timestamp.format>yyyyMMdd-HHmm</maven.build.timestamp.format>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <air.version>14.0</air.version>
+        <air.version>15.0</air.version>
         <yelbota.adt.plugin.version>1.0.8</yelbota.adt.plugin.version>
     </properties>
 
