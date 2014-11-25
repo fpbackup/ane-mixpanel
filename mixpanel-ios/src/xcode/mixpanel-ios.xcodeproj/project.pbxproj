@@ -7,26 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		25BDDA2919C9DDE000B49BA0 /* PaymentUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 25BDDA2819C9DDE000B49BA0 /* PaymentUtils.m */; };
-		25C1CDDC19C30AC8009EDF88 /* FlashRuntimeExtensions.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 257CE67319C1DDA700C1347C /* FlashRuntimeExtensions.h */; };
+		07A8C83B1A24B2B40089D9E0 /* InAppPurchase_iOS.m in Sources */ = {isa = PBXBuildFile; fileRef = 07A8C8381A24B2B40089D9E0 /* InAppPurchase_iOS.m */; };
+		07A8C83C1A24B2B40089D9E0 /* PaymentUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 07A8C83A1A24B2B40089D9E0 /* PaymentUtils.m */; };
 		25DF04E619C1BD6A0088EBB3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25DF04E519C1BD6A0088EBB3 /* Foundation.framework */; };
-		25DF04EB19C1BD6A0088EBB3 /* InAppPurchase_iOS.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 25DF04EA19C1BD6A0088EBB3 /* InAppPurchase_iOS.h */; };
-		25DF04ED19C1BD6A0088EBB3 /* InAppPurchase_iOS.m in Sources */ = {isa = PBXBuildFile; fileRef = 25DF04EC19C1BD6A0088EBB3 /* InAppPurchase_iOS.m */; };
-		25DF04F419C1BD6A0088EBB3 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25DF04F319C1BD6A0088EBB3 /* XCTest.framework */; };
-		25DF04F519C1BD6A0088EBB3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25DF04E519C1BD6A0088EBB3 /* Foundation.framework */; };
-		25DF04F719C1BD6A0088EBB3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25DF04F619C1BD6A0088EBB3 /* UIKit.framework */; };
-		25DF04FA19C1BD6A0088EBB3 /* libmixpanel-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 25DF04E219C1BD6A0088EBB3 /* libmixpanel-ios.a */; };
+		97F0B9FA44C3382C66F53B92 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 115172CD3E192C2C0352948C /* libPods.a */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		25DF04F819C1BD6A0088EBB3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 25DF04DA19C1BD6A0088EBB3 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 25DF04E119C1BD6A0088EBB3;
-			remoteInfo = "InAppPurchase-iOS";
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		25DF04E019C1BD6A0088EBB3 /* CopyFiles */ = {
@@ -35,26 +20,24 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
-				25C1CDDC19C30AC8009EDF88 /* FlashRuntimeExtensions.h in CopyFiles */,
-				25DF04EB19C1BD6A0088EBB3 /* InAppPurchase_iOS.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		257CE67319C1DDA700C1347C /* FlashRuntimeExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlashRuntimeExtensions.h; sourceTree = "<group>"; };
+		07A8C8361A24B2B40089D9E0 /* FlashRuntimeExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlashRuntimeExtensions.h; path = "mixpanel-ios/FlashRuntimeExtensions.h"; sourceTree = SOURCE_ROOT; };
+		07A8C8371A24B2B40089D9E0 /* InAppPurchase_iOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InAppPurchase_iOS.h; path = "mixpanel-ios/InAppPurchase_iOS.h"; sourceTree = SOURCE_ROOT; };
+		07A8C8381A24B2B40089D9E0 /* InAppPurchase_iOS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InAppPurchase_iOS.m; path = "mixpanel-ios/InAppPurchase_iOS.m"; sourceTree = SOURCE_ROOT; };
+		07A8C8391A24B2B40089D9E0 /* PaymentUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PaymentUtils.h; path = "mixpanel-ios/PaymentUtils.h"; sourceTree = SOURCE_ROOT; };
+		07A8C83A1A24B2B40089D9E0 /* PaymentUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PaymentUtils.m; path = "mixpanel-ios/PaymentUtils.m"; sourceTree = SOURCE_ROOT; };
+		07A8C83D1A24BE470089D9E0 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		115172CD3E192C2C0352948C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		25BDD9FD19C9C7D000B49BA0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		25BDDA2719C9DDE000B49BA0 /* PaymentUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentUtils.h; sourceTree = "<group>"; };
-		25BDDA2819C9DDE000B49BA0 /* PaymentUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentUtils.m; sourceTree = "<group>"; };
 		25DF04E219C1BD6A0088EBB3 /* libmixpanel-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libmixpanel-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		25DF04E519C1BD6A0088EBB3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		25DF04E919C1BD6A0088EBB3 /* InAppPurchase-iOS-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "InAppPurchase-iOS-Prefix.pch"; sourceTree = "<group>"; };
-		25DF04EA19C1BD6A0088EBB3 /* InAppPurchase_iOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InAppPurchase_iOS.h; sourceTree = "<group>"; };
-		25DF04EC19C1BD6A0088EBB3 /* InAppPurchase_iOS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InAppPurchase_iOS.m; sourceTree = "<group>"; };
-		25DF04F219C1BD6A0088EBB3 /* mixpanel-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mixpanel-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		25DF04F319C1BD6A0088EBB3 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		25DF04F619C1BD6A0088EBB3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		A4E8B67CB3190A4538399BC7 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		D19197BBEF1655574FFD9633 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,17 +46,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				25DF04E619C1BD6A0088EBB3 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		25DF04EF19C1BD6A0088EBB3 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				25DF04F419C1BD6A0088EBB3 /* XCTest.framework in Frameworks */,
-				25DF04F719C1BD6A0088EBB3 /* UIKit.framework in Frameworks */,
-				25DF04F519C1BD6A0088EBB3 /* Foundation.framework in Frameworks */,
-				25DF04FA19C1BD6A0088EBB3 /* libmixpanel-ios.a in Frameworks */,
+				97F0B9FA44C3382C66F53B92 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,9 +56,11 @@
 		25DF04D919C1BD6A0088EBB3 = {
 			isa = PBXGroup;
 			children = (
+				07A8C83D1A24BE470089D9E0 /* Podfile */,
 				25DF04E719C1BD6A0088EBB3 /* mixpanel-ios */,
 				25DF04E419C1BD6A0088EBB3 /* Frameworks */,
 				25DF04E319C1BD6A0088EBB3 /* Products */,
+				A0B99CFE54FC70780623D660 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -93,7 +68,6 @@
 			isa = PBXGroup;
 			children = (
 				25DF04E219C1BD6A0088EBB3 /* libmixpanel-ios.a */,
-				25DF04F219C1BD6A0088EBB3 /* mixpanel-iosTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -102,9 +76,8 @@
 			isa = PBXGroup;
 			children = (
 				25DF04E519C1BD6A0088EBB3 /* Foundation.framework */,
-				25DF04F319C1BD6A0088EBB3 /* XCTest.framework */,
-				25DF04F619C1BD6A0088EBB3 /* UIKit.framework */,
 				25BDD9FD19C9C7D000B49BA0 /* CoreGraphics.framework */,
+				115172CD3E192C2C0352948C /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -112,23 +85,23 @@
 		25DF04E719C1BD6A0088EBB3 /* mixpanel-ios */ = {
 			isa = PBXGroup;
 			children = (
-				25DF04EA19C1BD6A0088EBB3 /* InAppPurchase_iOS.h */,
-				257CE67319C1DDA700C1347C /* FlashRuntimeExtensions.h */,
-				25DF04EC19C1BD6A0088EBB3 /* InAppPurchase_iOS.m */,
-				25BDDA2719C9DDE000B49BA0 /* PaymentUtils.h */,
-				25BDDA2819C9DDE000B49BA0 /* PaymentUtils.m */,
-				25DF04E819C1BD6A0088EBB3 /* Supporting Files */,
+				07A8C8361A24B2B40089D9E0 /* FlashRuntimeExtensions.h */,
+				07A8C8371A24B2B40089D9E0 /* InAppPurchase_iOS.h */,
+				07A8C8381A24B2B40089D9E0 /* InAppPurchase_iOS.m */,
+				07A8C8391A24B2B40089D9E0 /* PaymentUtils.h */,
+				07A8C83A1A24B2B40089D9E0 /* PaymentUtils.m */,
 			);
 			name = "mixpanel-ios";
 			path = "InAppPurchase-iOS";
 			sourceTree = "<group>";
 		};
-		25DF04E819C1BD6A0088EBB3 /* Supporting Files */ = {
+		A0B99CFE54FC70780623D660 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				25DF04E919C1BD6A0088EBB3 /* InAppPurchase-iOS-Prefix.pch */,
+				A4E8B67CB3190A4538399BC7 /* Pods.debug.xcconfig */,
+				D19197BBEF1655574FFD9633 /* Pods.release.xcconfig */,
 			);
-			name = "Supporting Files";
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,9 +111,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 25DF050519C1BD6A0088EBB3 /* Build configuration list for PBXNativeTarget "mixpanel-ios" */;
 			buildPhases = (
+				A1E77815572BA3A2A01E5BD8 /* Check Pods Manifest.lock */,
 				25DF04DE19C1BD6A0088EBB3 /* Sources */,
 				25DF04DF19C1BD6A0088EBB3 /* Frameworks */,
 				25DF04E019C1BD6A0088EBB3 /* CopyFiles */,
+				EF877933D88E491D8D1308A0 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -151,24 +126,6 @@
 			productReference = 25DF04E219C1BD6A0088EBB3 /* libmixpanel-ios.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		25DF04F119C1BD6A0088EBB3 /* mixpanel-iosTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 25DF050819C1BD6A0088EBB3 /* Build configuration list for PBXNativeTarget "mixpanel-iosTests" */;
-			buildPhases = (
-				25DF04EE19C1BD6A0088EBB3 /* Sources */,
-				25DF04EF19C1BD6A0088EBB3 /* Frameworks */,
-				25DF04F019C1BD6A0088EBB3 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				25DF04F919C1BD6A0088EBB3 /* PBXTargetDependency */,
-			);
-			name = "mixpanel-iosTests";
-			productName = "InAppPurchase-iOSTests";
-			productReference = 25DF04F219C1BD6A0088EBB3 /* mixpanel-iosTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -177,11 +134,6 @@
 			attributes = {
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = FunkyPanda;
-				TargetAttributes = {
-					25DF04F119C1BD6A0088EBB3 = {
-						TestTargetID = 25BDD9FA19C9C7D000B49BA0;
-					};
-				};
 			};
 			buildConfigurationList = 25DF04DD19C1BD6A0088EBB3 /* Build configuration list for PBXProject "mixpanel-ios" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -196,47 +148,54 @@
 			projectRoot = "";
 			targets = (
 				25DF04E119C1BD6A0088EBB3 /* mixpanel-ios */,
-				25DF04F119C1BD6A0088EBB3 /* mixpanel-iosTests */,
 			);
 		};
 /* End PBXProject section */
 
-/* Begin PBXResourcesBuildPhase section */
-		25DF04F019C1BD6A0088EBB3 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
+/* Begin PBXShellScriptBuildPhase section */
+		A1E77815572BA3A2A01E5BD8 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
 			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
 		};
-/* End PBXResourcesBuildPhase section */
+		EF877933D88E491D8D1308A0 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		25DF04DE19C1BD6A0088EBB3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				25BDDA2919C9DDE000B49BA0 /* PaymentUtils.m in Sources */,
-				25DF04ED19C1BD6A0088EBB3 /* InAppPurchase_iOS.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		25DF04EE19C1BD6A0088EBB3 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				07A8C83C1A24B2B40089D9E0 /* PaymentUtils.m in Sources */,
+				07A8C83B1A24B2B40089D9E0 /* InAppPurchase_iOS.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		25DF04F919C1BD6A0088EBB3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 25DF04E119C1BD6A0088EBB3 /* mixpanel-ios */;
-			targetProxy = 25DF04F819C1BD6A0088EBB3 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		25DF050319C1BD6A0088EBB3 /* Debug */ = {
@@ -273,6 +232,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				VALID_ARCHS = "armv6 armv7";
 			};
 			name = Debug;
 		};
@@ -304,15 +264,21 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "armv6 armv7";
 			};
 			name = Release;
 		};
 		25DF050619C1BD6A0088EBB3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A4E8B67CB3190A4538399BC7 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				DSTROOT = "/tmp/mixpanel-ios.dst";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "InAppPurchase-iOS/InAppPurchase-iOS-Prefix.pch";
+				GCC_PREFIX_HEADER = "";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Mixpanel",
+				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "mixpanel-ios";
@@ -323,55 +289,20 @@
 		};
 		25DF050719C1BD6A0088EBB3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D19197BBEF1655574FFD9633 /* Pods.release.xcconfig */;
 			buildSettings = {
 				DSTROOT = "/tmp/mixpanel-ios.dst";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "InAppPurchase-iOS/InAppPurchase-iOS-Prefix.pch";
+				GCC_PREFIX_HEADER = "";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Mixpanel",
+				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "mixpanel-ios";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		25DF050919C1BD6A0088EBB3 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/testPaymentANEApp.app/testPaymentANEApp";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "InAppPurchase-iOS/InAppPurchase-iOS-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "InAppPurchase-iOSTests/InAppPurchase-iOSTests-Info.plist";
-				PRODUCT_NAME = "mixpanel-iosTests";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		25DF050A19C1BD6A0088EBB3 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/testPaymentANEApp.app/testPaymentANEApp";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "InAppPurchase-iOS/InAppPurchase-iOS-Prefix.pch";
-				INFOPLIST_FILE = "InAppPurchase-iOSTests/InAppPurchase-iOSTests-Info.plist";
-				PRODUCT_NAME = "mixpanel-iosTests";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;
 		};
@@ -392,15 +323,6 @@
 			buildConfigurations = (
 				25DF050619C1BD6A0088EBB3 /* Debug */,
 				25DF050719C1BD6A0088EBB3 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		25DF050819C1BD6A0088EBB3 /* Build configuration list for PBXNativeTarget "mixpanel-iosTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				25DF050919C1BD6A0088EBB3 /* Debug */,
-				25DF050A19C1BD6A0088EBB3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
