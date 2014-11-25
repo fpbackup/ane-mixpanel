@@ -2,7 +2,7 @@
 <module type="Flex" version="4">
   <component name="FlexBuildConfigurationManager" active="testapp">
     <configurations>
-      <configuration name="testapp" target-platform="Mobile" pure-as="true" output-file="testapp.swf" output-folder="$USER_HOME$/IdeaProjects/MixPanel-ANE/out/production/testapp">
+      <configuration name="testapp" target-platform="Mobile" pure-as="true" main-class="Main" output-file="testapp.swf" output-folder="$USER_HOME$/IdeaProjects/MixPanel-ANE/out/production/testapp">
         <dependencies>
           <entries>
             <entry library-id="8e675eea-ebb6-4a80-9bc2-51765b3274dc">
@@ -14,6 +14,9 @@
             <entry library-id="9e747f04-0b81-4520-860c-0ee157a3d7f4">
               <dependency linkage="Merged" />
             </entry>
+            <entry library-id="883be954-a145-4c44-b56c-03c2005bec80">
+              <dependency linkage="Merged" />
+            </entry>
           </entries>
           <sdk name="AIRSDK_Compiler" />
         </dependencies>
@@ -21,7 +24,7 @@
           <option name="additionalOptions" value="-debug=true" />
         </compiler-options>
         <packaging-air-desktop />
-        <packaging-android enabled="true" use-generated-descriptor="false" custom-descriptor-path="$MODULE_DIR$/resources/ANETest-app.xml" package-file-name="testapp" />
+        <packaging-android use-generated-descriptor="false" custom-descriptor-path="$MODULE_DIR$/resources/ANETest-app.xml" package-file-name="testapp" />
         <packaging-ios enabled="true" use-generated-descriptor="false" custom-descriptor-path="$MODULE_DIR$/resources/ANETest-app.xml" package-file-name="testapp" />
       </configuration>
     </configurations>
@@ -59,6 +62,16 @@
         <properties id="9e747f04-0b81-4520-860c-0ee157a3d7f4" />
         <CLASSES>
           <root url="jar://$MODULE_DIR$/libs/starling.swc!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library type="flex">
+        <properties id="883be954-a145-4c44-b56c-03c2005bec80" />
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../mixpanel-ane/target/ane-mixpanel.ane!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

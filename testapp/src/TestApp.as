@@ -21,18 +21,17 @@ package
         // taken from rinoa client
         public static const GOOGLE_PLAY_PUBLIC_KEY : String = "TODO GET KEY";
 
-        private var service : InAppPayments;
+      //  private var service : InAppPayments;
 
         private var logTF : ScrollText;
         private static const TOP : uint = 445;
         private const container: ScrollContainer = new ScrollContainer();
 
-        private var unconsumedPurchase : Purchase;
 
         public function TestApp()
         {
             addEventListener(Event.ADDED_TO_STAGE, addedToStageHandler);
-
+/*
             service = InAppPayments.service;
 
             // response to getProductsInfo
@@ -95,7 +94,7 @@ package
             service.addEventListener(PurchaseDebugEvent.DEBUG, function (evt : PurchaseDebugEvent) : void
             {
                 log(evt.type + " " + evt.message);
-            });
+            });*/
         }
 
         protected function addedToStageHandler(event : Event) : void
@@ -124,7 +123,7 @@ package
             container.width = stage.stageWidth;
             container.height = TOP;
             addChild(container);
-
+/*
             var button : Button = new Button();
             button.addEventListener(Event.TRIGGERED, function (evt : Event) : void
             {
@@ -248,7 +247,7 @@ package
             button.label = "CLEAR LOG";
             button.validate();
             container.addChild(button);
-
+*/
             logTF = new ScrollText();
             logTF.height = stage.stageHeight - TOP;
             logTF.width = stage.stageWidth;
@@ -256,7 +255,7 @@ package
             logTF.textFormat = new TextFormat(null, 22, 0xdedede);
             addChild(logTF);
 
-            log("Testing application for the payments ANE. It uses the rinoa client credentials.");
+            log("Testing application for the mixpanel ANE.");
         }
 
         private function log(str : String) : void
