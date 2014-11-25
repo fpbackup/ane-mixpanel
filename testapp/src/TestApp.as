@@ -1,6 +1,9 @@
 package
 {
 
+    import com.funkypanda.mixpanelane.MixPanelANE;
+    import com.funkypanda.mixpanelane.events.MixPanelANEDebugEvent;
+
     import feathers.controls.Button;
     import feathers.controls.ScrollContainer;
     import feathers.controls.ScrollText;
@@ -33,7 +36,7 @@ package
             addEventListener(Event.ADDED_TO_STAGE, addedToStageHandler);
 
             // debug - can be fired anytime
-            service.addEventListener(PurchaseDebugEvent.DEBUG, function (evt : PurchaseDebugEvent) : void
+            service.addEventListener(MixPanelANEDebugEvent.DEBUG, function (evt : MixPanelANEDebugEvent) : void
             {
                 log(evt.type + " " + evt.message);
             });

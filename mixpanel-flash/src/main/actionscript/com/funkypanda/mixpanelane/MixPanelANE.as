@@ -25,10 +25,6 @@ package com.funkypanda.mixpanelane
             return _instance;
         }
 
-        /** Usage:
-         * MixPanelANE.service.addEventListener(..); // The app dispatches events from the "events" package.
-         * MixPanelANE.service.[command you want to execute];
-         */
         public function MixPanelANE()
         {
             if (_instance == null)
@@ -47,12 +43,6 @@ package com.funkypanda.mixpanelane
             throw new Error("The singleton has already been created.");
         }
 
-        /** Get the detailed product info from the store.
-         *  Params:
-         *  products: An Array of String product IDs
-         *  Events dispatched as a reply:
-         *  GetProductInfoSuccessEvent, GetProductInfoErrorEvent
-         */
         public function getProductInfo(products : Array) : void
         {
             _extContext.call("getProductInfo", products);
