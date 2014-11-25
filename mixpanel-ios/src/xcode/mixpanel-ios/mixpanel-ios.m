@@ -29,7 +29,7 @@ BOOL isPurchasedItemsQuery = NO;
 }
 
 // this is called when the extension context is created.
-void InAppPurchaseContextInitializer(void* extData, const uint8_t* ctxType, FREContext ctx, uint32_t* numFunctionsToTest, const FRENamedFunction** functionsToSet)
+void ContextInitializer(void* extData, const uint8_t* ctxType, FREContext ctx, uint32_t* numFunctionsToTest, const FRENamedFunction** functionsToSet)
 {
     *numFunctionsToTest = 1;
     
@@ -53,10 +53,10 @@ void InAppPurchaseContextInitializer(void* extData, const uint8_t* ctxType, FREC
 
 // This method will set which methods to call when doing the actual initialization.
 // The initializer node in the iPhone-ARM platform of the extension.xml file must have the same name as this function
-void InAppPurchaseInitializer(void** extDataToSet, FREContextInitializer* ctxInitializerToSet, FREContextFinalizer* ctxFinalizerToSet)
+void MixpanelLibInitializer(void** extDataToSet, FREContextInitializer* ctxInitializerToSet, FREContextFinalizer* ctxFinalizerToSet)
 {
     *extDataToSet = NULL;
-    *ctxInitializerToSet = &InAppPurchaseContextInitializer;
+    *ctxInitializerToSet = &ContextInitializer;
 }
 
 

@@ -7,14 +7,14 @@
     <platforms>
         <platform name="iPhone-ARM">
             <applicationDeployment>
-                <nativeLibrary>libInAppPurchase-iOS.a</nativeLibrary>
-                <initializer>InAppPurchaseInitializer</initializer>
+                <nativeLibrary>libmixpanel-ios.a</nativeLibrary>
+                <initializer>MixpanelLibInitializer</initializer>
             </applicationDeployment>
         </platform>
         <platform name="iPhone-x86">
             <applicationDeployment>
-                <nativeLibrary>libInAppPurchase-iOS.a</nativeLibrary>
-                <initializer>InAppPurchaseInitializer</initializer>
+                <nativeLibrary>libmixpanel-ios.a</nativeLibrary>
+                <initializer>MixpanelLibInitializer</initializer>
             </applicationDeployment>
         </platform>
         <platform name="Android-ARM">
