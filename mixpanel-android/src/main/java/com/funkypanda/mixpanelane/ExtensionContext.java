@@ -1,9 +1,9 @@
-package com.funkypanda.mobilebilling;
+package com.funkypanda.mixpanelane;
 
 
 import com.adobe.fre.FREContext;
 import com.adobe.fre.FREFunction;
-import com.funkypanda.mobilebilling.functions.*;
+import com.funkypanda.mixpanelane.functions.*;
 
 import java.util.HashMap;
 import java.util.Map;

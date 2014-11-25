@@ -1,9 +1,9 @@
-package com.funkypanda.mobilebilling.init;
+package com.funkypanda.mixpanelane.init;
 
 import com.android.vending.util.IabHelper;
 import com.android.vending.util.IabResult;
-import com.funkypanda.mobilebilling.ANEUtils;
-import com.funkypanda.mobilebilling.Extension;
+import com.funkypanda.mixpanelane.ANEUtils;
+import com.funkypanda.mixpanelane.Extension;
 
 public class BillingSetupCommand implements IabHelper.OnIabSetupFinishedListener
 {

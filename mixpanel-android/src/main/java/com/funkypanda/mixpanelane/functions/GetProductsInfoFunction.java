@@ -1,4 +1,4 @@
-package com.funkypanda.mobilebilling.functions;
+package com.funkypanda.mixpanelane.functions;
 
 import com.adobe.fre.FREArray;
 import com.adobe.fre.FREContext;
@@ -7,11 +7,11 @@ import com.adobe.fre.FREObject;
 import com.android.vending.util.IabHelper;
 import com.android.vending.util.IabResult;
 import com.android.vending.util.Inventory;
-import com.funkypanda.mobilebilling.ANEUtils;
-import com.funkypanda.mobilebilling.Extension;
-import com.funkypanda.mobilebilling.FlashConstants;
-import com.funkypanda.mobilebilling.Parsers;
-import com.funkypanda.mobilebilling.init.BillingSetupCommand;
+import com.funkypanda.mixpanelane.ANEUtils;
+import com.funkypanda.mixpanelane.Extension;
+import com.funkypanda.mixpanelane.FlashConstants;
+import com.funkypanda.mixpanelane.Parsers;
+import com.funkypanda.mixpanelane.init.BillingSetupCommand;
 import org.json.JSONArray;
 
 import java.util.List;

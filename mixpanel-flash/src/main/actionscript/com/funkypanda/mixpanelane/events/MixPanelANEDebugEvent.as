@@ -1,13 +1,13 @@
-package com.funkypanda.mobilebilling.events
+package com.funkypanda.mixpanelane.events
 {
     import flash.events.Event;
 
-    public class PurchaseDebugEvent extends Event
+    public class MixPanelANEDebugEvent extends Event
     {
 
         public static const DEBUG : String = "DEBUG";
 
-        public function PurchaseDebugEvent(data : String)
+        public function MixPanelANEDebugEvent(data : String)
         {
             super(DEBUG);
             _message = data;

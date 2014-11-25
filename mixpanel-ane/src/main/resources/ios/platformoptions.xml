@@ -1,4 +1,4 @@
-<platform xmlns="http://ns.adobe.com/air/extension/3.5">
+<platform xmlns="http://ns.adobe.com/air/extension/15.0">
 
     <!-- The version of iOS SDK -->
     <sdkVersion>6.0</sdkVersion>

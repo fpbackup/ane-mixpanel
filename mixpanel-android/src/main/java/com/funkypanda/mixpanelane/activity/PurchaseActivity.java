@@ -1,4 +1,4 @@
-package com.funkypanda.mobilebilling.activity;
+package com.funkypanda.mixpanelane.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -6,11 +6,11 @@ import android.os.Bundle;
 import com.android.vending.util.IabHelper;
 import com.android.vending.util.IabResult;
 import com.android.vending.util.Purchase;
-import com.funkypanda.mobilebilling.ANEUtils;
-import com.funkypanda.mobilebilling.Extension;
-import com.funkypanda.mobilebilling.FlashConstants;
-import com.funkypanda.mobilebilling.Parsers;
-import com.funkypanda.mobilebilling.functions.MakePurchaseFunction;
+import com.funkypanda.mixpanelane.ANEUtils;
+import com.funkypanda.mixpanelane.Extension;
+import com.funkypanda.mixpanelane.FlashConstants;
+import com.funkypanda.mixpanelane.Parsers;
+import com.funkypanda.mixpanelane.functions.MakePurchaseFunction;
 import org.json.JSONException;
 import org.json.JSONObject;
 

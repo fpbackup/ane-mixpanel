@@ -1,4 +1,4 @@
-package com.funkypanda.mobilebilling;
+package com.funkypanda.mixpanelane;
 
 import com.android.vending.util.Inventory;
 import com.android.vending.util.Purchase;

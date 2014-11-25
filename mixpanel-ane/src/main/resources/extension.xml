@@ -1,8 +1,8 @@
-<extension xmlns="http://ns.adobe.com/air/extension/3.5">
+<extension xmlns="http://ns.adobe.com/air/extension/15.0">
 
-    <id>com.funkypanda.mixpanel</id>
+    <id>com.funkypandagame.mixpanel</id>
 
-    <versionNumber>0.0.1</versionNumber>
+    <versionNumber>1.0.0</versionNumber>
 
     <platforms>
         <platform name="iPhone-ARM">
@@ -20,7 +20,7 @@
         <platform name="Android-ARM">
             <applicationDeployment>
                 <nativeLibrary>libInAppPurchase-Android.jar</nativeLibrary>
-                <initializer>com.funkypanda.mobilebilling.Extension</initializer>
+                <initializer>com.funkypanda.mixpanelane.Extension</initializer>
             </applicationDeployment>
         </platform>
         <platform name="default">

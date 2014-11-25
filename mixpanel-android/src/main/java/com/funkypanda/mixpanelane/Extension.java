@@ -1,4 +1,4 @@
-package com.funkypanda.mobilebilling;
+package com.funkypanda.mixpanelane;
 
 import android.app.Activity;
 import android.util.Log;

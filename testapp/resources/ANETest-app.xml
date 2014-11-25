@@ -37,7 +37,7 @@
                 <uses-permission android:name="com.android.vending.BILLING" />
 
                 <application>
-                    <activity android:name="com.funkypanda.mobilebilling.activity.PurchaseActivity"
+                    <activity android:name="com.funkypanda.mixpanelane.activity.PurchaseActivity"
                     android:label=""
                     android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"/>
                 </application>

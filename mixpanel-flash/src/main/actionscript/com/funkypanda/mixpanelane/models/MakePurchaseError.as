@@ -1,4 +1,4 @@
-package com.funkypanda.mobilebilling.models
+package com.funkypanda.mixpanelane.models
 {
 
     public class MakePurchaseError
