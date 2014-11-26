@@ -25,7 +25,9 @@
         </compiler-options>
         <packaging-air-desktop />
         <packaging-android use-generated-descriptor="false" custom-descriptor-path="$MODULE_DIR$/resources/ANETest-app.xml" package-file-name="testapp" />
-        <packaging-ios enabled="true" use-generated-descriptor="false" custom-descriptor-path="$MODULE_DIR$/resources/ANETest-app.xml" package-file-name="testapp" />
+        <packaging-ios enabled="true" use-generated-descriptor="false" custom-descriptor-path="$MODULE_DIR$/resources/ANETest-app.xml" package-file-name="testapp">
+          <AirSigningOptions keystore-path="$MODULE_DIR$/resources/ios_development.p12" provisioning-profile-path="$MODULE_DIR$/resources/development.mobileprovision" />
+        </packaging-ios>
       </configuration>
     </configurations>
     <compiler-options />

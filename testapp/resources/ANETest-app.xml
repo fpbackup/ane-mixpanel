@@ -1,19 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <application xmlns="http://ns.adobe.com/air/application/15.0">
 
-	<id>com.funkypanda.rinoa-client</id>
-	<filename>BillingANETest</filename>
-	<name>Purchase ANE Test</name>
+	<id>com.funkypanda.rinoa</id>
+	<filename>MixPanel Test</filename>
+	<name>MixPanel ANE Test</name>
 	<versionNumber>1.0.0</versionNumber>
 	<versionLabel>1.0.0</versionLabel>
 
 	<initialWindow>
-		<!-- The main SWF or HTML file of the application. Required. -->
-		<!-- Note: In Flash Builder, the SWF reference is set automatically. -->
 		<content>testapp.swf</content>
         <renderMode>direct</renderMode>
         <fullScreen>true</fullScreen>
-
     	<autoOrients>true</autoOrients>
         <visible>true</visible>
     </initialWindow>
@@ -48,7 +45,7 @@
     </android>
 
     <extensions>
-        <extensionID>com.funkypanda.mixpanel</extensionID>
+        <extensionID>com.funkypandagame.mixpanel</extensionID>
     </extensions>
 
 </application>

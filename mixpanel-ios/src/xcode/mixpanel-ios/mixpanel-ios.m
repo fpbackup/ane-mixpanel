@@ -6,8 +6,6 @@ FREContext AirContext = nil;
 
 void *SelfReference;
 
-NSArray * avaiableProducts = nil;
-
 BOOL hasTransactionObserver = NO;
 
 BOOL isPurchasedItemsQuery = NO;
@@ -88,12 +86,6 @@ FREObject getProductsInfo(FREContext context, void* functionData, uint32_t argc,
         
         [productsIdentifiers addObject:productIdentifier];
     }
-    
-    if (avaiableProducts != nil)
-    {
-        [avaiableProducts release];
-        avaiableProducts = nil;
-    }
     return nil;
 }
 
@@ -103,14 +95,9 @@ FREObject getProductsInfo(FREContext context, void* functionData, uint32_t argc,
 
 -(void)dealloc
 {
-    NSLog(@"Purchase library: Deallocating");
+    NSLog(@"MixPanel library: Deallocating");
     hasTransactionObserver = NO;
     SelfReference = nil;
-    if (avaiableProducts != nil)
-    {
-        [avaiableProducts release];
-        avaiableProducts = nil;
-    }
     [super dealloc];
 }
 
