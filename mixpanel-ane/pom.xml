@@ -29,8 +29,8 @@
                             <outputDirectory>${project.basedir}/src/main/resources/ios</outputDirectory>
                             <resources>
                                 <resource>
-                                    <!-- <directory>${project.basedir}/../mobile-billing-ios/target/Release/</directory> -->
-                                    <directory>${project.basedir}/../mixpanel-ios/src/xcode/DerivedData/mixpanel-ios/Build/Intermediates/ArchiveIntermediates/InAppPurchase-iOS/IntermediateBuildFilesPath/UninstalledProducts/</directory>
+                                    <directory>${project.basedir}/../mixpanel-ios/target/Release/</directory>
+                                   <!-- <directory>${project.basedir}/../mixpanel-ios/src/xcode/DerivedData/mixpanel-ios/Build/Intermediates/ArchiveIntermediates/InAppPurchase-iOS/IntermediateBuildFilesPath/UninstalledProducts/</directory>-->
                                     <includes>
                                         <include>libmixpanel-ios.a</include>
                                     </includes>

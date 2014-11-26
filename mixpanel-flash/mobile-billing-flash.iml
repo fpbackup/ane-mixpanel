@@ -15,7 +15,7 @@
           <map>
             <entry key="compiler.locale" value="" />
           </map>
-          <option name="additionalConfigFilePath" value="$USER_HOME$/IdeaProjects/MixPanel-ANE/.idea/flexmojos/mobile-billing-flash-com.funkypanda.xml" />
+          <option name="additionalConfigFilePath" value="$USER_HOME$/IdeaProjects/MixPanel-ANE/.idea/flexmojos/mixpanel-flash-com.funkypanda.xml" />
         </compiler-options>
         <packaging-air-desktop />
         <packaging-android />

@@ -3,20 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>SchemeUserState</key>
-	<dict/>
+	<dict>
+		<key>mixPanelLib.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
+	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>25BDD9FA19C9C7D000B49BA0</key>
+		<key>07A348E21A26366300F6A8E5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>25DF04E119C1BD6A0088EBB3</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>25DF04F119C1BD6A0088EBB3</key>
+		<key>07A348ED1A26366400F6A8E5</key>
 		<dict>
 			<key>primary</key>
 			<true/>

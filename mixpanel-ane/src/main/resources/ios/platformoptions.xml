@@ -1,15 +1,15 @@
 <platform xmlns="http://ns.adobe.com/air/extension/15.0">
 
-    <sdkVersion>6.0</sdkVersion>
-    <linkerOptions>
-        <option>-ios_version_min 6.0</option>
-        <option>-framework Accelerate</option>
-        <option>-framework CoreTelephony</option>
-        <option>-framework Security</option>
-    </linkerOptions>
+<sdkVersion>6.0</sdkVersion>
+<linkerOptions>
+    <option>-ios_version_min 6.0</option>
+    <option>-framework Accelerate</option>
+    <option>-framework CoreTelephony</option>
+    <option>-framework Security</option>
+</linkerOptions>
 
-    <packagedDependencies>
-        <packagedDependency>libPods-Mixpanel.a</packagedDependency>
-    </packagedDependencies>
+<!--  <packagedDependencies>
+      <packagedDependency>libPods-Mixpanel.a</packagedDependency>
+  </packagedDependencies>-->
 
 </platform>

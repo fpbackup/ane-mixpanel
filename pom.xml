@@ -16,8 +16,8 @@
 
     <modules>
         <module>mixpanel-flash</module>
-        <!--<module>mixpanel-android</module>
-        <module>mixpanel-ios</module>-->
+        <!--<module>mixpanel-android</module>-->
+        <module>mixpanel-ios</module>
         <module>mixpanel-ane</module>
     </modules>
 
