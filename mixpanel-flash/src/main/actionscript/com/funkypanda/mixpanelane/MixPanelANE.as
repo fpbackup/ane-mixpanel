@@ -2,8 +2,10 @@ package com.funkypanda.mixpanelane
 {
 
     import com.funkypanda.mixpanelane.events.MixPanelANEDebugEvent;
+import com.funkypanda.mixpanelane.events.MixPanelInitErrorEvent;
+import com.funkypanda.mixpanelane.events.MixPanelTrackErrorEvent;
 
-    import flash.events.EventDispatcher;
+import flash.events.EventDispatcher;
     import flash.events.StatusEvent;
     import flash.external.ExtensionContext;
     import flash.system.Capabilities;
@@ -43,9 +45,25 @@ package com.funkypanda.mixpanelane
             throw new Error("The singleton has already been created.");
         }
 
-        public function getProductInfo(products : Array) : void
+        public function initWithToken(mixPaneltoken : String) : void
         {
-            _extContext.call("getProductInfo", products);
+            if (mixPaneltoken == null)
+            {
+                dispatchEvent(new MixPanelInitErrorEvent("input parameters cannot be null"));
+                return;
+            }
+            _extContext.call("initWithToken", mixPaneltoken);
+        }
+
+        /** properties must hold String key value pairs */
+        public function track(eventName : String, properties : Object) : void
+        {
+            if (eventName == null || properties == null)
+            {
+                dispatchEvent(new MixPanelTrackErrorEvent("input parameters cannot be null"));
+                return;
+            }
+            _extContext.call("track", eventName, JSON.stringify(properties));
         }
 
         //////////////////////////////////////////////////////////////////////////////////////
@@ -57,10 +75,12 @@ package com.funkypanda.mixpanelane
             switch (event.code)
             {
                 case MixPanelANEDebugEvent.DEBUG:
-                    dispatchEvent(new MixPanelANEDebugEvent(event.level));
-                    break;
+                   dispatchEvent(new MixPanelANEDebugEvent(event.level));
+                break;
                 // replies
-                // ...
+                case MixPanelTrackErrorEvent.TYPE:
+                    dispatchEvent(new MixPanelTrackErrorEvent(event.level));
+                    break;
                 default:
                     dispatchEvent(new MixPanelANEDebugEvent("Unknown event type received from the ANE. Data: " + event.level));
                     break;

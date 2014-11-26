@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		07A8C83B1A24B2B40089D9E0 /* mixpanel-ios.m in Sources */ = {isa = PBXBuildFile; fileRef = 07A8C8381A24B2B40089D9E0 /* mixpanel-ios.m */; };
-		25DF04E619C1BD6A0088EBB3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25DF04E519C1BD6A0088EBB3 /* Foundation.framework */; };
-		97F0B9FA44C3382C66F53B92 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 115172CD3E192C2C0352948C /* libPods.a */; };
+		0753E3691A26263600F59A35 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25DF04E519C1BD6A0088EBB3 /* Foundation.framework */; };
+		07A348591A2627D400F6A8E5 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 115172CD3E192C2C0352948C /* libPods.a */; };
+		07A8C83B1A24B2B40089D9E0 /* MixpanelFlashLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = 07A8C8381A24B2B40089D9E0 /* MixpanelFlashLibrary.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,9 +25,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0753E3631A2625F200F59A35 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		07A8C8361A24B2B40089D9E0 /* FlashRuntimeExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlashRuntimeExtensions.h; path = "mixpanel-ios/FlashRuntimeExtensions.h"; sourceTree = SOURCE_ROOT; };
-		07A8C8371A24B2B40089D9E0 /* mixpanel-ios.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "mixpanel-ios.h"; path = "mixpanel-ios/mixpanel-ios.h"; sourceTree = SOURCE_ROOT; };
-		07A8C8381A24B2B40089D9E0 /* mixpanel-ios.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "mixpanel-ios.m"; path = "mixpanel-ios/mixpanel-ios.m"; sourceTree = SOURCE_ROOT; };
+		07A8C8371A24B2B40089D9E0 /* MixpanelFlashLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MixpanelFlashLibrary.h; path = "mixpanel-ios/MixpanelFlashLibrary.h"; sourceTree = SOURCE_ROOT; };
+		07A8C8381A24B2B40089D9E0 /* MixpanelFlashLibrary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MixpanelFlashLibrary.m; path = "mixpanel-ios/MixpanelFlashLibrary.m"; sourceTree = SOURCE_ROOT; };
 		07A8C83D1A24BE470089D9E0 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		115172CD3E192C2C0352948C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		25BDD9FD19C9C7D000B49BA0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -42,8 +43,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				25DF04E619C1BD6A0088EBB3 /* Foundation.framework in Frameworks */,
-				97F0B9FA44C3382C66F53B92 /* libPods.a in Frameworks */,
+				0753E3691A26263600F59A35 /* Foundation.framework in Frameworks */,
+				07A348591A2627D400F6A8E5 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +73,7 @@
 		25DF04E419C1BD6A0088EBB3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0753E3631A2625F200F59A35 /* AssetsLibrary.framework */,
 				25DF04E519C1BD6A0088EBB3 /* Foundation.framework */,
 				25BDD9FD19C9C7D000B49BA0 /* CoreGraphics.framework */,
 				115172CD3E192C2C0352948C /* libPods.a */,
@@ -83,8 +85,8 @@
 			isa = PBXGroup;
 			children = (
 				07A8C8361A24B2B40089D9E0 /* FlashRuntimeExtensions.h */,
-				07A8C8371A24B2B40089D9E0 /* mixpanel-ios.h */,
-				07A8C8381A24B2B40089D9E0 /* mixpanel-ios.m */,
+				07A8C8371A24B2B40089D9E0 /* MixpanelFlashLibrary.h */,
+				07A8C8381A24B2B40089D9E0 /* MixpanelFlashLibrary.m */,
 			);
 			name = "mixpanel-ios";
 			path = "InAppPurchase-iOS";
@@ -185,7 +187,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				07A8C83B1A24B2B40089D9E0 /* mixpanel-ios.m in Sources */,
+				07A8C83B1A24B2B40089D9E0 /* MixpanelFlashLibrary.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,7 +228,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				VALID_ARCHS = "armv6 armv7 arm64";
+				VALID_ARCHS = "armv6 armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -258,7 +260,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
-				VALID_ARCHS = "armv6 armv7 arm64";
+				VALID_ARCHS = "armv6 armv7 armv7s";
 			};
 			name = Release;
 		};
@@ -272,6 +274,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Mixpanel",
+					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
@@ -292,6 +295,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Mixpanel",
+					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
