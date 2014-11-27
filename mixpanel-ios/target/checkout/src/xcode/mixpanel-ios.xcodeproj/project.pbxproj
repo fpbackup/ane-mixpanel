@@ -125,7 +125,7 @@
 		0755F7071A2659CA0028DEF6 /* UIColor+MPColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0755F5801A2651B50028DEF6 /* UIColor+MPColor.m */; };
 		0755F7091A2659CA0028DEF6 /* UIImage+MPAverageColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0755F5821A2651B50028DEF6 /* UIImage+MPAverageColor.m */; };
 		0755F70B1A2659CA0028DEF6 /* UIImage+MPImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 0755F5841A2651B50028DEF6 /* UIImage+MPImageEffects.m */; };
-		07A34A051A2636FE00F6A8E5 /* MixpanelFlashLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = 07A34A041A2636FE00F6A8E5 /* MixpanelFlashLibrary.m */; };
+		07A34A051A2636FE00F6A8E5 /* MixpanelFlashLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = 07A34A041A2636FE00F6A8E5 /* MixpanelFlashLibrary.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		07A34A071A26379000F6A8E5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07A34A061A26379000F6A8E5 /* Accelerate.framework */; };
 		07A34A091A26379D00F6A8E5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07A34A081A26379D00F6A8E5 /* Foundation.framework */; };
 		07A34A0D1A2637B100F6A8E5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07A34A0C1A2637B100F6A8E5 /* UIKit.framework */; };
@@ -728,6 +728,8 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
+					"MIXPANEL_LOG=1",
+					"MIXPANEL_DEBUG=1",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -767,6 +769,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = mixPanelLib/PrefixHeader.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = "MIXPANEL_LOG=1";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;

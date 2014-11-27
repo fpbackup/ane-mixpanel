@@ -15,7 +15,7 @@ void *SelfReference;
     self = [super init];
     if (self)
     {
-        SelfReference = (__bridge void *)(self);
+        SelfReference = (void *)(self);
     }
     NSLog(@"MixPanel library: init");
     return self;
@@ -41,9 +41,9 @@ void ContextInitializer(void* extData, const uint8_t* ctxType, FREContext ctx, u
     
     AirContext = ctx;
     
-    if ((__bridge MixpanelFlashLibrary*)SelfReference == nil)
+    if ((MixpanelFlashLibrary*)SelfReference == nil)
     {
-        SelfReference = (__bridge void *)([[MixpanelFlashLibrary alloc] init]);
+        SelfReference = (void *)([[MixpanelFlashLibrary alloc] init]);
     }
     
 }
@@ -64,7 +64,7 @@ void MixpanelLibInitializer(void** extDataToSet, FREContextInitializer* ctxIniti
 
 FREObject initWithToken(FREContext context, void* functionData, uint32_t argc, FREObject argv[])
 {
-    [(__bridge MixpanelFlashLibrary*)SelfReference logDebug: @"initializing"];
+    [(MixpanelFlashLibrary*)SelfReference logDebug: @"initializing"];
     uint32_t stringLength;
     
     const uint8_t *input;
@@ -81,23 +81,25 @@ FREObject initWithToken(FREContext context, void* functionData, uint32_t argc, F
 
 FREObject track(FREContext context, void* functionData, uint32_t argc, FREObject argv[])
 {
-    [(__bridge MixpanelFlashLibrary*)SelfReference logDebug: @"track event"];
-    uint32_t stringLength;
+    [(MixpanelFlashLibrary*)SelfReference logDebug: @"track event"];
     
+    uint32_t nameLength;
     const uint8_t *eventNameRaw;
-    FREGetObjectAsUTF8(argv[1], &stringLength, &eventNameRaw);
+    FREGetObjectAsUTF8(argv[0], &nameLength, &eventNameRaw);
     NSString *eventName = [NSString stringWithUTF8String:(char*)eventNameRaw];
     
+    uint32_t stringLength;
     const uint8_t *propsRaw;
-    FREGetObjectAsUTF8(argv[0], &stringLength, &propsRaw);
+    FREGetObjectAsUTF8(argv[1], &stringLength, &propsRaw);
     NSString *properties = [NSString stringWithUTF8String:(char*)propsRaw];
     NSError * err;
     NSDictionary *props = [NSJSONSerialization JSONObjectWithData: [properties dataUsingEncoding:NSUTF8StringEncoding] options: NSJSONReadingMutableContainers error: &err];
-    if (err != nil)
+    if (!props)
     {
-        FREDispatchStatusEventAsync(context, (uint8_t*) "TRACK_ERROR", (uint8_t*)[@"Cannot parse JSON received from Flash." UTF8String]);
+        NSString * errStr = [NSString stringWithFormat:@"%@,%@", @"Cannot parse JSON received from Flash.", [err debugDescription]];
+        NSLog(@"Error parsing JSON: %@", err);
+        FREDispatchStatusEventAsync(context, (uint8_t*) "TRACK_ERROR", (uint8_t*)[errStr UTF8String]);
         return nil;
-
     }
     
     Mixpanel *mixpanel = [Mixpanel sharedInstance];
@@ -114,6 +116,7 @@ FREObject track(FREContext context, void* functionData, uint32_t argc, FREObject
 {
     NSLog(@"MixPanel library: Deallocating");
     SelfReference = nil;
+    [super dealloc];
 }
 
 //////////////////////////////////////////////////////////////////////////////////////

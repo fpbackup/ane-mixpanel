@@ -63,7 +63,7 @@ import flash.events.EventDispatcher;
                 dispatchEvent(new MixPanelTrackErrorEvent("input parameters cannot be null"));
                 return;
             }
-            _extContext.call("track", eventName, JSON.stringify(properties));
+            _extContext.call("track", eventName, JSON.stringify(properties)+";[454cvSZAR 55,./");
         }
 
         //////////////////////////////////////////////////////////////////////////////////////
