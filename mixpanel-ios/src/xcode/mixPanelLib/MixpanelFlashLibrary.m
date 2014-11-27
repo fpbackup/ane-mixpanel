@@ -17,12 +17,14 @@ void *SelfReference;
     {
         SelfReference = (__bridge void *)(self);
     }
+    NSLog(@"MixPanel library: init");
     return self;
 }
 
 // this is called when the extension context is created.
 void ContextInitializer(void* extData, const uint8_t* ctxType, FREContext ctx, uint32_t* numFunctionsToTest, const FRENamedFunction** functionsToSet)
 {
+     NSLog(@"MixPanel library: init context");
     *numFunctionsToTest = 2;
     
     FRENamedFunction* func = (FRENamedFunction*) malloc(sizeof(FRENamedFunction) * *numFunctionsToTest);
@@ -50,6 +52,8 @@ void ContextInitializer(void* extData, const uint8_t* ctxType, FREContext ctx, u
 // The initializer node in the iPhone-ARM platform of the extension.xml file must have the same name as this function
 void MixpanelLibInitializer(void** extDataToSet, FREContextInitializer* ctxInitializerToSet, FREContextFinalizer* ctxFinalizerToSet)
 {
+    NSLog(@"MixPanel library: init lib");
+
     *extDataToSet = NULL;
     *ctxInitializerToSet = &ContextInitializer;
 }

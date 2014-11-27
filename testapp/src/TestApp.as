@@ -3,8 +3,9 @@ package
 
     import com.funkypanda.mixpanelane.MixPanelANE;
     import com.funkypanda.mixpanelane.events.MixPanelANEDebugEvent;
+import com.funkypanda.mixpanelane.events.MixPanelTrackErrorEvent;
 
-    import feathers.controls.Button;
+import feathers.controls.Button;
     import feathers.controls.ScrollContainer;
     import feathers.controls.ScrollText;
     import feathers.layout.TiledColumnsLayout;
@@ -38,6 +39,10 @@ package
 
             // debug - can be fired anytime
             service.addEventListener(MixPanelANEDebugEvent.DEBUG, function (evt : MixPanelANEDebugEvent) : void
+            {
+                log(evt.type + " " + evt.message);
+            });
+            service.addEventListener(MixPanelTrackErrorEvent.TYPE, function (evt : MixPanelTrackErrorEvent) : void
             {
                 log(evt.type + " " + evt.message);
             });
