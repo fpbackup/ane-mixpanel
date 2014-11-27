@@ -5,11 +5,8 @@
     <option>-ios_version_min 6.0</option>
     <option>-framework Accelerate</option>
     <option>-framework CoreTelephony</option>
-    <option>-framework Security</option>
+    <!-- to link with the libicucore.dylib No idea why its not called actually -licucore -->
+    <option>-licucore</option>
 </linkerOptions>
-
-<!--  <packagedDependencies>
-      <packagedDependency>libPods-Mixpanel.a</packagedDependency>
-  </packagedDependencies>-->
 
 </platform>
