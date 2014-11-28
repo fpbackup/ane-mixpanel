@@ -45,6 +45,9 @@ import flash.events.EventDispatcher;
             throw new Error("The singleton has already been created.");
         }
 
+        /*
+         * You must call this before making any other call.
+         */
         public function initWithToken(mixPaneltoken : String) : void
         {
             if (mixPaneltoken == null)
@@ -55,7 +58,15 @@ import flash.events.EventDispatcher;
             _extContext.call("initWithToken", mixPaneltoken);
         }
 
-        /** properties must hold String key value pairs */
+        /** properties must hold key value pairs where the values can be Strings, numeric types, and Boolean.
+         *  Everything else will get converted to a String. For example:
+         *  track("some event", {
+         *       prop1 : "test value for prop1",
+         *       prop2 : true,
+         *       prop3 : 12345});
+         *
+         *  eventName and properties can not be null.
+         */
         public function track(eventName : String, properties : Object) : void
         {
             if (eventName == null || properties == null)
@@ -66,6 +77,20 @@ import flash.events.EventDispatcher;
             _extContext.call("track", eventName, JSON.stringify(properties));
         }
 
+        /** This causes the "Do you want to receive push notifications?" popup to appear. If the user has
+         *  already answered it has not effect.
+         *  Note for developers: iOS is designed to only ask permission for push once a day per application, this
+         *  persists between reinstalls. To test it again, do thew following:
+         *
+         *  1. Delete your app from the device.
+         *  2. Turn the device off completely and turn it back on.
+         *  3. Go to Settings > General > Date & Time and set the date ahead a day or more.
+         *  4. Turn the device off completely again and turn it back on.
+         */
+        public function registerForRemoteNotifications() : void
+        {
+            _extContext.call("registerForRemoteNotifications");
+        }
         //////////////////////////////////////////////////////////////////////////////////////
         // NATIVE LIBRARY RESPONSE HANDLER
         //////////////////////////////////////////////////////////////////////////////////////

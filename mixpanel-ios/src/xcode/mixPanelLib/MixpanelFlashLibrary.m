@@ -17,15 +17,14 @@ void *SelfReference;
     {
         SelfReference = (void *)(self);
     }
-    NSLog(@"MixPanel library: init");
     return self;
 }
 
 // this is called when the extension context is created.
 void ContextInitializer(void* extData, const uint8_t* ctxType, FREContext ctx, uint32_t* numFunctionsToTest, const FRENamedFunction** functionsToSet)
 {
-     NSLog(@"MixPanel library: init context");
-    *numFunctionsToTest = 2;
+     NSLog(@"initializing context");
+    *numFunctionsToTest = 3;
     
     FRENamedFunction* func = (FRENamedFunction*) malloc(sizeof(FRENamedFunction) * *numFunctionsToTest);
     
@@ -36,6 +35,10 @@ void ContextInitializer(void* extData, const uint8_t* ctxType, FREContext ctx, u
     func[1].name = (const uint8_t*) "track";
     func[1].functionData = NULL;
     func[1].function = &track;
+    
+    func[2].name = (const uint8_t*) "registerForRemoteNotifications";
+    func[2].functionData = NULL;
+    func[2].function = &registerForRemoteNotifications;
     
     *functionsToSet = func;
     
@@ -52,8 +55,6 @@ void ContextInitializer(void* extData, const uint8_t* ctxType, FREContext ctx, u
 // The initializer node in the iPhone-ARM platform of the extension.xml file must have the same name as this function
 void MixpanelLibInitializer(void** extDataToSet, FREContextInitializer* ctxInitializerToSet, FREContextFinalizer* ctxFinalizerToSet)
 {
-    NSLog(@"MixPanel library: init lib");
-
     *extDataToSet = NULL;
     *ctxInitializerToSet = &ContextInitializer;
 }
@@ -64,7 +65,7 @@ void MixpanelLibInitializer(void** extDataToSet, FREContextInitializer* ctxIniti
 
 FREObject initWithToken(FREContext context, void* functionData, uint32_t argc, FREObject argv[])
 {
-    [(MixpanelFlashLibrary*)SelfReference logDebug: @"initializing"];
+    [(MixpanelFlashLibrary*)SelfReference logDebug: @"initializing with token"];
     uint32_t stringLength;
     
     const uint8_t *input;
@@ -76,7 +77,7 @@ FREObject initWithToken(FREContext context, void* functionData, uint32_t argc, F
 }
 
 //////////////////////////////////////////////////////////////////////////////////////
-// SEND EVENT
+// TRACK
 //////////////////////////////////////////////////////////////////////////////////////
 
 FREObject track(FREContext context, void* functionData, uint32_t argc, FREObject argv[])
@@ -109,12 +110,29 @@ FREObject track(FREContext context, void* functionData, uint32_t argc, FREObject
 }
 
 //////////////////////////////////////////////////////////////////////////////////////
+// REGISTER FOR PUSH NOTIFICATIONS
+//////////////////////////////////////////////////////////////////////////////////////
+
+FREObject registerForRemoteNotifications(FREContext context, void* functionData, uint32_t argc, FREObject argv[])
+{
+    [(MixpanelFlashLibrary*)SelfReference logDebug: @"Register for remote notifications"];
+    
+    // This will cause the "do you want to receive push notifications?" popup to appear
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
+     (UIRemoteNotificationTypeBadge |
+      UIRemoteNotificationTypeSound |
+      UIRemoteNotificationTypeAlert)];
+    
+    return nil;
+}
+
+//////////////////////////////////////////////////////////////////////////////////////
 // DESTRUCTOR
 //////////////////////////////////////////////////////////////////////////////////////
 
 -(void)dealloc
 {
-    NSLog(@"MixPanel library: Deallocating");
+    NSLog(@"Deallocating");
     SelfReference = nil;
     [super dealloc];
 }

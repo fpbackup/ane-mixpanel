@@ -92,13 +92,23 @@ import flash.text.TextFormat;
             button = new Button();
             button.addEventListener(Event.TRIGGERED, function (evt : Event) : void
             {
-                service.track("sample event", {
-                    prop1 : "testVal for prop1",
-                    prop2 : true,
-                    prop3 : ["arr1", "arr2", {embedded:"embedded object"}],
-                    prop4 : Math.random()});
+                service.track("another event", {
+                prop1 : "testVal for prop1",
+                prop2 : true,
+                prop3 : ["arr1", "arr2", {embedded:"embedded object"}],
+                prop4 : {subData:"embedded object", subData2:12345},
+                prop5 : Math.random()});
             });
             button.label = "track";
+            button.validate();
+            container.addChild(button);
+
+            button = new Button();
+            button.addEventListener(Event.TRIGGERED, function (evt : Event) : void
+            {
+                service.registerForRemoteNotifications();
+            });
+            button.label = "Register for push notif.";
             button.validate();
             container.addChild(button);
 
