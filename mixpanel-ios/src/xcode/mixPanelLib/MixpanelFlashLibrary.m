@@ -8,28 +8,24 @@ void *SelfReference;
 
 @implementation MixpanelFlashLibrary
 
-//empty delegate functions, stubbed signature is so we can find this method in the delegate
-//and override it with our custom implementation
+//empty delegate functions, stubbed signature is so we can find this method in the delegate and override it with our custom implementation
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{}
-//
+
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error{}
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{}
 
-- (void)application:(UIApplication *)application didRegisterUserNotificationSettings: (UIUserNotificationSettings *)notificationSettings
-{
-    [application registerForRemoteNotifications];
-}
-/*
-- (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString   *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void(^)())completionHandler
-{
-    NSLog(@"Received push notification");
-    if ([identifier isEqualToString:@"declineAction"]){
-    }
-    else if ([identifier isEqualToString:@"answerAction"]){
-    }
-}
-*/
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_8_0
+- (void)application:(UIApplication *)application didRegisterUserNotificationSettings: (UIUserNotificationSettings *)notificationSettings{}
+
+//- (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void(^)())completionHandler
+//{
+//    NSLog(@"Received push notification");
+//    if ([identifier isEqualToString:@"declineAction"]){ }
+//    else if ([identifier isEqualToString:@"answerAction"]){ }
+//}
+#endif
+
 -(NSString *)dataToJSON:(id)data
 {
     NSError *error;
@@ -58,8 +54,7 @@ void *SelfReference;
 // this is called when the extension context is created.
 void ContextInitializer(void* extData, const uint8_t* ctxType, FREContext ctx, uint32_t* numFunctionsToTest, const FRENamedFunction** functionsToSet)
 {
-     NSLog(@"initializing context");
-    
+    NSLog(@"initializing context");
     
     //injects our modified delegate functions into the sharedApplication delegate
     
@@ -74,21 +69,27 @@ void ContextInitializer(void* extData, const uint8_t* ctxType, FREContext ctx, u
         modDelegate = objc_allocateClassPair(objectClass, [newClassName UTF8String], 0);
         
         SEL selectorToOverride1 = @selector(application:didRegisterForRemoteNotificationsWithDeviceToken:);
-        
         SEL selectorToOverride2 = @selector(application:didFailToRegisterForRemoteNotificationsWithError:);
-        
         SEL selectorToOverride3 = @selector(application:didReceiveRemoteNotification:);
+        
+        #if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_8_0
+        SEL selectorToOverride4 = @selector(application:didRegisterUserNotificationSettings:);
+        #endif
         
         // get the info on the method we're going to override
         Method m1 = class_getInstanceMethod(objectClass, selectorToOverride1);
         Method m2 = class_getInstanceMethod(objectClass, selectorToOverride2);
         Method m3 = class_getInstanceMethod(objectClass, selectorToOverride3);
-        
+        #if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_8_0
+        Method m4 = class_getInstanceMethod(objectClass, selectorToOverride4);
+        #endif
         // add the method to the new class
         class_addMethod(modDelegate, selectorToOverride1, (IMP)didRegisterForRemoteNotificationsWithDeviceToken, method_getTypeEncoding(m1));
         class_addMethod(modDelegate, selectorToOverride2, (IMP)didFailToRegisterForRemoteNotificationsWithError, method_getTypeEncoding(m2));
         class_addMethod(modDelegate, selectorToOverride3, (IMP)didReceiveRemoteNotification, method_getTypeEncoding(m3));
-        
+        #if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_8_0
+        class_addMethod(modDelegate, selectorToOverride4, (IMP)didRegisterUserNotificationSettings, method_getTypeEncoding(m4));
+        #endif
         // register the new class with the runtime
         objc_registerClassPair(modDelegate);
     }
@@ -96,7 +97,6 @@ void ContextInitializer(void* extData, const uint8_t* ctxType, FREContext ctx, u
     object_setClass(delegate, modDelegate);
     
     ///////// end of delegate injection / modification code
-    
     
     *numFunctionsToTest = 5;
     
@@ -238,27 +238,19 @@ FREObject track(FREContext context, void* functionData, uint32_t argc, FREObject
 FREObject registerForRemoteNotifications(FREContext context, void* functionData, uint32_t argc, FREObject argv[])
 {
     [(MixpanelFlashLibrary*)SelfReference logDebug: @"Register for remote notifications"];
-    
-    // This will cause the "do you want to receive push notifications?" popup to appear
-    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
-     (UIRemoteNotificationTypeBadge |
-      UIRemoteNotificationTypeSound |
-      UIRemoteNotificationTypeAlert)];
-    
-    if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_7_1)
-    {
-        // iOS 8
+    NSLog(@"registerForRemoteNotifications");
+    #if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_8_0
         UIUserNotificationSettings* settings = [UIUserNotificationSettings settingsForTypes:
-                                                UIUserNotificationTypeAlert |
-                                                UIUserNotificationTypeBadge |
-                                                UIUserNotificationTypeSound categories:nil];
+                                            UIUserNotificationTypeAlert |
+                                            UIUserNotificationTypeBadge |
+                                            UIUserNotificationTypeSound categories:nil];
         [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
-    } else
-    {
-        // iOS 7 or iOS 6
+    #else
         [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
-         (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
-    }
+         (UIRemoteNotificationTypeBadge |
+          UIRemoteNotificationTypeSound |
+          UIRemoteNotificationTypeAlert)];
+     #endif
     
     return nil;
 }
@@ -288,8 +280,16 @@ void didFailToRegisterForRemoteNotificationsWithError(id self, SEL _cmd, UIAppli
     }
 }
 
-void didReceiveRemoteNotification(id self, SEL _cmd, UIApplication* application,NSDictionary *userInfo)
+void didReceiveRemoteNotification(id self, SEL _cmd, UIApplication* application, NSDictionary *userInfo)
 {
     NSLog(@"Received remote notification");
 }
+
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_8_0
+void didRegisterUserNotificationSettings(id self, SEL _cmd, UIApplication* application, UIUserNotificationSettings *notificationSettings)
+{
+    NSLog(@"Register for notifications");
+    [application registerForRemoteNotifications];
+}
+#endif
 

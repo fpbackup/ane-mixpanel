@@ -22,5 +22,7 @@ FREObject registerForRemoteNotifications(FREContext context, void* functionData,
 void didRegisterForRemoteNotificationsWithDeviceToken(id self, SEL _cmd, UIApplication* application, NSData* deviceToken);
 void didFailToRegisterForRemoteNotificationsWithError(id self, SEL _cmd, UIApplication* application, NSError* error);
 void didReceiveRemoteNotification(id self, SEL _cmd, UIApplication* application,NSDictionary *userInfo);
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_8_0
 void didRegisterUserNotificationSettings(id self, SEL _cmd, UIApplication * application, UIUserNotificationSettings *notificationSettings);
 //void handleActionWithIdentifier(id self, SEL _cmd, UIApplication * application, NSString* identifier, NSDictionary* userInfo, void(^)() completionHandler);
+#endif
