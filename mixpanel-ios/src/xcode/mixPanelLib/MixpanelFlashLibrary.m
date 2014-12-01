@@ -24,7 +24,7 @@ void *SelfReference;
 void ContextInitializer(void* extData, const uint8_t* ctxType, FREContext ctx, uint32_t* numFunctionsToTest, const FRENamedFunction** functionsToSet)
 {
      NSLog(@"initializing context");
-    *numFunctionsToTest = 3;
+    *numFunctionsToTest = 5;
     
     FRENamedFunction* func = (FRENamedFunction*) malloc(sizeof(FRENamedFunction) * *numFunctionsToTest);
     
@@ -40,6 +40,13 @@ void ContextInitializer(void* extData, const uint8_t* ctxType, FREContext ctx, u
     func[2].functionData = NULL;
     func[2].function = &registerForRemoteNotifications;
     
+    func[3].name = (const uint8_t*) "identify";
+    func[3].functionData = NULL;
+    func[3].function = &identify;
+    
+    func[4].name = (const uint8_t*) "createAlias";
+    func[4].functionData = NULL;
+    func[4].function = &createAlias;
     *functionsToSet = func;
     
     AirContext = ctx;
@@ -73,6 +80,47 @@ FREObject initWithToken(FREContext context, void* functionData, uint32_t argc, F
     NSString *mixPanelToken = [NSString stringWithUTF8String:(char*)input];
     
     [Mixpanel sharedInstanceWithToken:mixPanelToken];
+    return nil;
+}
+
+//////////////////////////////////////////////////////////////////////////////////////
+// IDENTIFY
+//////////////////////////////////////////////////////////////////////////////////////
+
+// should be called on each app startup
+FREObject identify(FREContext context, void* functionData, uint32_t argc, FREObject argv[])
+{
+    [(MixpanelFlashLibrary*)SelfReference logDebug: @"Identify user"];
+    uint32_t stringLength;
+    
+    const uint8_t *input;
+    FREGetObjectAsUTF8(argv[0], &stringLength, &input);
+    NSString *userID = [NSString stringWithUTF8String:(char*)input];
+    
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    // Associate all future events sent from the library with the user ID
+    [mixpanel identify:userID];
+    return nil;
+}
+
+//////////////////////////////////////////////////////////////////////////////////////
+// CREATE ALIAS
+//////////////////////////////////////////////////////////////////////////////////////
+
+// should be called on the first startup
+FREObject createAlias(FREContext context, void* functionData, uint32_t argc, FREObject argv[])
+{
+    [(MixpanelFlashLibrary*)SelfReference logDebug: @"Create alias"];
+    uint32_t stringLength;
+    
+    const uint8_t *input;
+    FREGetObjectAsUTF8(argv[0], &stringLength, &input);
+    NSString *userID = [NSString stringWithUTF8String:(char*)input];
+    
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    // This makes the current ID (an auto-generated GUID) and userID interchangeable distinct ids.
+    [mixpanel createAlias:userID forDistinctID:mixpanel.distinctId];
+    
     return nil;
 }
 
@@ -126,6 +174,28 @@ FREObject registerForRemoteNotifications(FREContext context, void* functionData,
     return nil;
 }
 
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    [mixpanel.people addPushDeviceToken:deviceToken];
+    
+    NSString* tokenString = [NSString stringWithFormat:@"%@", deviceToken];
+    
+    if ( AirContext != nil )
+    {
+        FREDispatchStatusEventAsync(AirContext, (uint8_t*) "REMOTE_NOTIFICATIONS_REGISTER_SUCCESS", (uint8_t*)[tokenString UTF8String]);
+    }
+}
+
+- (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error {
+    
+    NSLog(@"Failed to register for push notifications");
+    
+    if ( AirContext != nil )
+    {
+        FREDispatchStatusEventAsync(AirContext, (uint8_t*)"REMOTE_NOTIFICATIONS_REGISTER_ERROR", (uint8_t*)[error description]);
+    }
+}
+
 //////////////////////////////////////////////////////////////////////////////////////
 // DESTRUCTOR
 //////////////////////////////////////////////////////////////////////////////////////
@@ -134,6 +204,7 @@ FREObject registerForRemoteNotifications(FREContext context, void* functionData,
 {
     NSLog(@"Deallocating");
     SelfReference = nil;
+    AirContext = nil;
     [super dealloc];
 }
 
@@ -155,7 +226,10 @@ FREObject registerForRemoteNotifications(FREContext context, void* functionData,
 -(void)logDebug:(NSString *) str
 {
     NSLog(str, nil);
-    FREDispatchStatusEventAsync(AirContext ,(uint8_t*) "DEBUG", (uint8_t*) [str UTF8String] );
+    if ( AirContext != nil )
+    {
+        FREDispatchStatusEventAsync(AirContext ,(uint8_t*) "DEBUG", (uint8_t*) [str UTF8String] );
+    }
 }
 
 @end

@@ -3,6 +3,9 @@ package
 
     import com.funkypanda.mixpanelane.MixPanelANE;
     import com.funkypanda.mixpanelane.events.MixPanelANEDebugEvent;
+import com.funkypanda.mixpanelane.events.MixPanelInitErrorEvent;
+import com.funkypanda.mixpanelane.events.MixPanelRegisterPushNotificationErrorEvent;
+import com.funkypanda.mixpanelane.events.MixPanelRegisterPushNotificationSuccessEvent;
 import com.funkypanda.mixpanelane.events.MixPanelTrackErrorEvent;
 
 import feathers.controls.Button;
@@ -44,6 +47,18 @@ import flash.text.TextFormat;
 
             // debug - can be fired anytime
             service.addEventListener(MixPanelANEDebugEvent.DEBUG, function (evt : MixPanelANEDebugEvent) : void
+            {
+                log(evt.type + " " + evt.message);
+            });
+            service.addEventListener(MixPanelInitErrorEvent.TYPE, function (evt : MixPanelInitErrorEvent) : void
+            {
+                log(evt.type + " " + evt.message);
+            });
+            service.addEventListener(MixPanelRegisterPushNotificationSuccessEvent.TYPE, function (evt : MixPanelRegisterPushNotificationSuccessEvent) : void
+            {
+                log(evt.type + " " + evt.token);
+            });
+            service.addEventListener(MixPanelRegisterPushNotificationErrorEvent.TYPE, function (evt : MixPanelRegisterPushNotificationErrorEvent) : void
             {
                 log(evt.type + " " + evt.message);
             });
@@ -109,6 +124,24 @@ import flash.text.TextFormat;
                 service.registerForRemoteNotifications();
             });
             button.label = "Register for push notif.";
+            button.validate();
+            container.addChild(button);
+
+            button = new Button();
+            button.addEventListener(Event.TRIGGERED, function (evt : Event) : void
+            {
+                service.identify("test123");
+            });
+            button.label = "identify";
+            button.validate();
+            container.addChild(button);
+
+            button = new Button();
+            button.addEventListener(Event.TRIGGERED, function (evt : Event) : void
+            {
+                service.createAlias("test123");
+            });
+            button.label = "createAlias";
             button.validate();
             container.addChild(button);
 

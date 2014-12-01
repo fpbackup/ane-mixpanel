@@ -1,14 +1,16 @@
 package com.funkypanda.mixpanelane
 {
 
-    import com.funkypanda.mixpanelane.events.MixPanelANEDebugEvent;
+import com.funkypanda.mixpanelane.events.MixPanelANEDebugEvent;
 import com.funkypanda.mixpanelane.events.MixPanelInitErrorEvent;
+import com.funkypanda.mixpanelane.events.MixPanelRegisterPushNotificationErrorEvent;
+import com.funkypanda.mixpanelane.events.MixPanelRegisterPushNotificationSuccessEvent;
 import com.funkypanda.mixpanelane.events.MixPanelTrackErrorEvent;
 
 import flash.events.EventDispatcher;
-    import flash.events.StatusEvent;
-    import flash.external.ExtensionContext;
-    import flash.system.Capabilities;
+import flash.events.StatusEvent;
+import flash.external.ExtensionContext;
+import flash.system.Capabilities;
 
     public class MixPanelANE extends EventDispatcher
     {
@@ -91,6 +93,31 @@ import flash.events.EventDispatcher;
         {
             _extContext.call("registerForRemoteNotifications");
         }
+
+        /**
+         * The Mixpanel library will assign a default unique identifier (we call it a "distinct ID") to each unique user
+         * who installs your application. This distinct ID is saved to device storage so that it will persist across sessions.
+         *
+         * If you choose, you can assign your own user IDs. This is particularly useful if a user is using your app on
+         * multiple platforms (both web and mobile, for example). To assign your own distinct_ids, you can use identify.
+         *
+         * You should call this on every app startup
+         */
+        public function identify(userID : String) : void
+        {
+            _extContext.call("identify", userID);
+        }
+
+        /**
+         * In situations where you want to link the two IDs (in practice, this really just means when the user signs up)
+         * you should use createAlias:, which sends an update to our server linking the current ID with a new ID.
+         *
+         * You should call this on the first startup
+         */
+        public function createAlias(userID : String) : void
+        {
+            _extContext.call("createAlias", userID);
+        }
         //////////////////////////////////////////////////////////////////////////////////////
         // NATIVE LIBRARY RESPONSE HANDLER
         //////////////////////////////////////////////////////////////////////////////////////
@@ -100,11 +127,16 @@ import flash.events.EventDispatcher;
             switch (event.code)
             {
                 case MixPanelANEDebugEvent.DEBUG:
-                   dispatchEvent(new MixPanelANEDebugEvent(event.level));
-                break;
-                // replies
+                    dispatchEvent(new MixPanelANEDebugEvent(event.level));
+                    break;
                 case MixPanelTrackErrorEvent.TYPE:
                     dispatchEvent(new MixPanelTrackErrorEvent(event.level));
+                    break;
+                case MixPanelRegisterPushNotificationSuccessEvent.TYPE:
+                    dispatchEvent(new MixPanelRegisterPushNotificationSuccessEvent(event.level));
+                    break;
+                case MixPanelRegisterPushNotificationErrorEvent.TYPE:
+                    dispatchEvent(new MixPanelRegisterPushNotificationErrorEvent(event.level));
                     break;
                 default:
                     dispatchEvent(new MixPanelANEDebugEvent("Unknown event type received from the ANE. Data: " + event.level));
