@@ -26,19 +26,22 @@
 
         <Entitlements>
             <![CDATA[
-                <key>get-task-allow</key>
-                <true/>
-
-                <key>aps-environment</key>
-                <string>development</string>
-
-                <key>application-identifier</key>
-                <string>9QTJ8S973U.com.funkypanda.rinoa</string>
-
                 <key>keychain-access-groups</key>
                 <array>
                     <string>9QTJ8S973U.*</string>
                 </array>
+
+                <key>get-task-allow</key>
+                <true/>
+
+                <key>application-identifier</key>
+                <string>9QTJ8S973U.com.funkypanda.rinoa</string>
+
+                <key>com.apple.developer.team-identifier</key>
+                <string>9QTJ8S973U</string>
+
+                <key>aps-environment</key>
+                <string>development</string>
                 ]]>
         </Entitlements>
         <requestedDisplayResolution>high</requestedDisplayResolution>

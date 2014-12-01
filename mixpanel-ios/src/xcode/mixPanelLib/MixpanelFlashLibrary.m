@@ -1,4 +1,6 @@
 #import "MixpanelFlashLibrary.h"
+#import <objc/runtime.h>
+#import <objc/message.h>
 
 FREContext AirContext = nil;
 
@@ -6,24 +8,96 @@ void *SelfReference;
 
 @implementation MixpanelFlashLibrary
 
+//empty delegate functions, stubbed signature is so we can find this method in the delegate
+//and override it with our custom implementation
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{}
+//
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error{}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{}
+
+- (void)application:(UIApplication *)application didRegisterUserNotificationSettings: (UIUserNotificationSettings *)notificationSettings
+{
+    [application registerForRemoteNotifications];
+}
+/*
+- (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString   *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void(^)())completionHandler
+{
+    NSLog(@"Received push notification");
+    if ([identifier isEqualToString:@"declineAction"]){
+    }
+    else if ([identifier isEqualToString:@"answerAction"]){
+    }
+}
+*/
+-(NSString *)dataToJSON:(id)data
+{
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:data options:0 error:&error];
+    if (!jsonData)
+    {
+        return [NSString stringWithFormat:@"ERROR Unable to parse JSON %@ %@", error.description, error.debugDescription];
+    }
+    return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+}
+
+-(void)logDebug:(NSString *) str
+{
+    NSLog(str, nil);
+    if ( AirContext != nil )
+    {
+        FREDispatchStatusEventAsync(AirContext ,(uint8_t*) "DEBUG", (uint8_t*) [str UTF8String] );
+    }
+}
+
+@end
 //////////////////////////////////////////////////////////////////////////////////////
 // INITIALIZATION
 //////////////////////////////////////////////////////////////////////////////////////
-
-- (id) init
-{    
-    self = [super init];
-    if (self)
-    {
-        SelfReference = (void *)(self);
-    }
-    return self;
-}
 
 // this is called when the extension context is created.
 void ContextInitializer(void* extData, const uint8_t* ctxType, FREContext ctx, uint32_t* numFunctionsToTest, const FRENamedFunction** functionsToSet)
 {
      NSLog(@"initializing context");
+    
+    
+    //injects our modified delegate functions into the sharedApplication delegate
+    
+    id delegate = [[UIApplication sharedApplication] delegate];
+    
+    Class objectClass = object_getClass(delegate);
+    
+    NSString *newClassName = [NSString stringWithFormat:@"Custom_%@", NSStringFromClass(objectClass)];
+    Class modDelegate = NSClassFromString(newClassName);
+    if (modDelegate == nil) {
+        // this class doesn't exist; create it
+        modDelegate = objc_allocateClassPair(objectClass, [newClassName UTF8String], 0);
+        
+        SEL selectorToOverride1 = @selector(application:didRegisterForRemoteNotificationsWithDeviceToken:);
+        
+        SEL selectorToOverride2 = @selector(application:didFailToRegisterForRemoteNotificationsWithError:);
+        
+        SEL selectorToOverride3 = @selector(application:didReceiveRemoteNotification:);
+        
+        // get the info on the method we're going to override
+        Method m1 = class_getInstanceMethod(objectClass, selectorToOverride1);
+        Method m2 = class_getInstanceMethod(objectClass, selectorToOverride2);
+        Method m3 = class_getInstanceMethod(objectClass, selectorToOverride3);
+        
+        // add the method to the new class
+        class_addMethod(modDelegate, selectorToOverride1, (IMP)didRegisterForRemoteNotificationsWithDeviceToken, method_getTypeEncoding(m1));
+        class_addMethod(modDelegate, selectorToOverride2, (IMP)didFailToRegisterForRemoteNotificationsWithError, method_getTypeEncoding(m2));
+        class_addMethod(modDelegate, selectorToOverride3, (IMP)didReceiveRemoteNotification, method_getTypeEncoding(m3));
+        
+        // register the new class with the runtime
+        objc_registerClassPair(modDelegate);
+    }
+    // change the class of the object
+    object_setClass(delegate, modDelegate);
+    
+    ///////// end of delegate injection / modification code
+    
+    
     *numFunctionsToTest = 5;
     
     FRENamedFunction* func = (FRENamedFunction*) malloc(sizeof(FRENamedFunction) * *numFunctionsToTest);
@@ -171,10 +245,27 @@ FREObject registerForRemoteNotifications(FREContext context, void* functionData,
       UIRemoteNotificationTypeSound |
       UIRemoteNotificationTypeAlert)];
     
+    if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_7_1)
+    {
+        // iOS 8
+        UIUserNotificationSettings* settings = [UIUserNotificationSettings settingsForTypes:
+                                                UIUserNotificationTypeAlert |
+                                                UIUserNotificationTypeBadge |
+                                                UIUserNotificationTypeSound categories:nil];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+    } else
+    {
+        // iOS 7 or iOS 6
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
+         (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+    }
+    
     return nil;
 }
 
-- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+void didRegisterForRemoteNotificationsWithDeviceToken(id self, SEL _cmd, UIApplication* application, NSData* deviceToken)
+{
+    NSLog(@"Registering for remote notifications success");
     Mixpanel *mixpanel = [Mixpanel sharedInstance];
     [mixpanel.people addPushDeviceToken:deviceToken];
     
@@ -186,7 +277,8 @@ FREObject registerForRemoteNotifications(FREContext context, void* functionData,
     }
 }
 
-- (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error {
+void didFailToRegisterForRemoteNotificationsWithError(id self, SEL _cmd, UIApplication* application, NSError* error)
+{
     
     NSLog(@"Failed to register for push notifications");
     
@@ -196,40 +288,8 @@ FREObject registerForRemoteNotifications(FREContext context, void* functionData,
     }
 }
 
-//////////////////////////////////////////////////////////////////////////////////////
-// DESTRUCTOR
-//////////////////////////////////////////////////////////////////////////////////////
-
--(void)dealloc
+void didReceiveRemoteNotification(id self, SEL _cmd, UIApplication* application,NSDictionary *userInfo)
 {
-    NSLog(@"Deallocating");
-    SelfReference = nil;
-    AirContext = nil;
-    [super dealloc];
+    NSLog(@"Received remote notification");
 }
 
-//////////////////////////////////////////////////////////////////////////////////////
-// MISC
-//////////////////////////////////////////////////////////////////////////////////////
-
--(NSString *)dataToJSON:(id)data
-{
-    NSError *error;
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:data options:0 error:&error];
-    if (!jsonData)
-    {
-        return [NSString stringWithFormat:@"ERROR Unable to parse JSON %@ %@", error.description, error.debugDescription];
-    }
-    return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-}
-
--(void)logDebug:(NSString *) str
-{
-    NSLog(str, nil);
-    if ( AirContext != nil )
-    {
-        FREDispatchStatusEventAsync(AirContext ,(uint8_t*) "DEBUG", (uint8_t*) [str UTF8String] );
-    }
-}
-
-@end

@@ -134,7 +134,6 @@
 		07A34A131A26385F00F6A8E5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07A34A121A26385F00F6A8E5 /* SystemConfiguration.framework */; };
 		07A34A151A26387000F6A8E5 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07A34A141A26387000F6A8E5 /* CoreTelephony.framework */; };
 		07A34A171A26388100F6A8E5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07A34A161A26388100F6A8E5 /* CoreGraphics.framework */; };
-		07DCE8B01A27656D001194BF /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 07DCE8AF1A27656D001194BF /* libicucore.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -298,7 +297,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				07DCE8B01A27656D001194BF /* libicucore.dylib in Frameworks */,
 				07A34A091A26379D00F6A8E5 /* Foundation.framework in Frameworks */,
 				07A34A0D1A2637B100F6A8E5 /* UIKit.framework in Frameworks */,
 				07A34A171A26388100F6A8E5 /* CoreGraphics.framework in Frameworks */,
