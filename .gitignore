@@ -2,6 +2,9 @@
 mixpanel-ios/target/*
 mixpanel-ios/src/xcode/DerivedData/*
 mixpanel-ios/src/xcode/Build/*
+*.xcworkspace
+!default.xcworkspace
+xcuserdata
 mixpanel-ios/target/*
 mixpanel-flash/target/*
 mixpanel-ane/target/*
