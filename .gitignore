@@ -10,3 +10,4 @@ mixpanel-ios/target/*
 mixpanel-flash/target/*
 mixpanel-ane/target/*
 ane-mixpanel-parent.iml
+!mixpanel-ane/target/*.ane
