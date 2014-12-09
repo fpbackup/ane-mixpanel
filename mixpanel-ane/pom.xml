@@ -30,7 +30,6 @@
                             <resources>
                                 <resource>
                                     <directory>${project.basedir}/../mixpanel-ios/target/Release/</directory>
-                                   <!-- <directory>${project.basedir}/../mixpanel-ios/src/xcode/DerivedData/mixpanel-ios/Build/Intermediates/ArchiveIntermediates/InAppPurchase-iOS/IntermediateBuildFilesPath/UninstalledProducts/</directory>-->
                                     <includes>
                                         <include>libmixpanel-ios.a</include>
                                     </includes>

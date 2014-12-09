@@ -1,4 +1,5 @@
 .DS_Store
+.idea
 mixpanel-ios/target/*
 mixpanel-ios/src/xcode/DerivedData/*
 mixpanel-ios/src/xcode/Build/*
